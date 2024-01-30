@@ -1,2 +1,678 @@
-<h1>Hello Lv Xiu Lei</h1>
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>apply、also、let、with、run</title>
+    <style>
+        /* Bootstrap theme */
 
+body {
+    font-size: 1rem;
+    line-height: 1.6;
+    --bezel-color: rgba(0, 0, 0, 0.03);
+}
+
+body.app-style-dark {
+    --bezel-color: rgba(0, 0, 0, 0.25);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 1.6rem;
+}
+
+h2 {
+    font-size: 1.4rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+h4 {
+    font-size: 1.1rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 1rem;
+}
+
+p {
+    margin: 1rem 0;
+}
+
+hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.app-style-dark hr {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+ol,
+ul {
+    padding-left: 2rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+ol p,
+ul p {
+    margin: 0.3rem 0;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+    margin-bottom: 0;
+}
+
+ul.task-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+dl {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+dt {
+    font-weight: 700;
+}
+
+dd {
+    margin-bottom: 0.5rem;
+    margin-left: 2rem;
+}
+
+.footnote {
+    font-size: 87.5%;
+}
+
+.footnote p {
+    margin: 0;
+}
+
+blockquote {
+    margin: 0 0 1rem;
+}
+
+dfn {
+    font-style: italic;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+small {
+    font-size: 80%;
+}
+
+sub,
+sup {
+    position: relative;
+    font-size: 75%;
+    line-height: 0;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:not([href]):not([tabindex]) {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:not([href]):not([tabindex]):hover,
+a:not([href]):not([tabindex]):focus {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:not([href]):not([tabindex]):focus {
+    outline: 0;
+}
+
+pre,
+code,
+kbd,
+samp {
+    font-family: ui-monospace, monospace;
+}
+
+pre {
+    margin: 1rem 0;
+    overflow: auto;
+}
+
+code {
+    color: #e83e8c;
+    word-break: break-word;
+}
+
+pre,
+code {
+    font-size: 87.5%;
+}
+
+pre code {
+    font-size: inherit;
+    color: inherit;
+    word-break: normal;
+}
+
+a > code {
+    color: inherit;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+mark {
+    padding: 2px 4px;
+    background-color: #fcf8e3;
+    border-radius: 4px;
+}
+
+.app-style-dark mark {
+    background-color: rgba(255, 255, 0, 0.8);
+    color: #000;
+}
+
+table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    border-collapse: collapse;
+    background-color: transparent;
+    --border-color: rgba(0, 0, 0, 0.09);
+    --hover-color: rgba(0, 0, 0, 0.03);
+}
+
+.app-style-dark table {
+    --border-color: rgba(255, 255, 255, 0.2);
+    --hover-color: rgba(255, 255, 255, 0.03);
+}
+
+table th,
+table td {
+    padding: 0.5rem;
+    vertical-align: top;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid var(--border-color);
+}
+
+table tbody + tbody {
+    border-top: 2px solid var(--border-color);
+}
+
+table tbody tr:hover {
+    background-color: var(--hover-color);
+}
+
+.toc {
+    max-width: min(50%, 300px);
+    float: right;
+    margin: 0 0 20px 20px;
+    padding: 10px 0;
+    background-color: var(--bezel-color);
+    border-radius: 8px;
+}
+
+@media (max-width: 350px) {
+    .toc {
+        float: none;
+        margin: 1.5rem 0;
+        max-width: none;
+    }
+
+    .toc:first-child {
+        margin: 0 0 1.5rem;
+    }
+}
+
+.toc > ul {
+    margin: 0;
+}
+
+.toc ul {
+    list-style: none;
+    padding: 0;
+}
+
+.toc > ul > li:not(:last-child) {
+    padding-bottom: 5px;
+}
+
+.toc a {
+    display: block;
+    padding: 1px 15px 1px 13px;
+    border-left: 2px solid transparent;
+    font-weight: 600;
+    color: inherit;
+    opacity: 0.75;
+}
+
+.toc a:hover,
+.toc a:focus {
+    text-decoration: none;
+    opacity: 1;
+    border-left: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.toc ul ul a {
+    font-size: 90%;
+    font-weight: 500;
+    padding-left: 25px;
+    opacity: 0.85;
+}
+
+.toc ul ul ul a {
+    padding-left: 40px;
+    font-weight: 400;
+}
+
+.toc ul ul ul ul a {
+    padding-left: 55px;
+}
+
+.toc ul ul ul ul ul a {
+    padding-left: 70px;
+}
+
+.toc ul ul ul ul ul ul a {
+    padding-left: 85px;
+}
+
+.codehilite pre {
+    padding: 1rem 1.5rem;
+    background-color: var(--bezel-color);
+}
+
+blockquote {
+    border-left: 3px solid rgba(0, 0, 0, 0.1);
+    padding-left: 10px;
+}
+
+.app-style-dark blockquote {
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+        :root { font-size: 15.0px }
+:root { --accent-color: #0a60ff }
+
+body {
+    font-family: -apple-system, system-ui, sans-serif;
+    line-height: 1.5;
+    margin: 0;
+    padding: 16px 20px;
+    color: #cccccc;
+    print-color-adjust: exact;
+}
+
+
+
+
+
+html, body { background-color: #232323 }
+
+a { color: #0a60ff }
+
+pre, code, kbd, samp {
+    font-family: ui-monospace, monospace;
+    -webkit-font-smoothing: subpixel-antialiased !important;
+}
+
+/* prevent horizontal overflow */
+
+body { overflow-wrap: break-word }
+ul, ol { word-break: break-word }
+img { max-width: 100% !important }
+code { white-space: normal !important }
+pre { white-space: pre-wrap !important }
+
+/* supporting pre/code structure for code blocks */
+
+pre code {
+    white-space: pre-wrap !important;
+    display: contents !important;
+}
+
+/* supporting code block line numbers */
+
+[data-linenos]:before {
+    content: attr(data-linenos);
+    opacity: 0.4;
+}
+
+/* overscroll */
+
+body > *:nth-last-child(1 of :not(.sticky-toc)) {
+    margin-bottom: 0;
+}
+
+
+
+
+
+.mermaid text:not(.slice):not(.error-text),
+.mermaid tspan {
+    font-family: -apple-system, Helvetica, sans-serif !important;
+    font-size: min(1rem, 18px) !important;
+}
+
+.mermaid text.titleText,
+.mermaid text.pieTitleText {
+    font-size: 1.5rem !important;
+}
+
+.mermaid .messageText {
+    font-weight: 200 !important;
+    letter-spacing: 0.8px !important;
+}
+
+.mermaid .edgeLabel .label rect,
+.mermaid .relationshipLabelBox {
+    opacity: 1.0 !important;
+    fill: #232323 !important;
+}
+
+.mermaid .attributeBoxOdd {
+    fill: #232323 !important;
+}
+
+.mermaid .attributeBoxEven {
+    fill: #2e2e2e !important;
+}
+
+.codehilite .ga { color: #ffffff }
+.codehilite .esc { color: #cccccc }
+.codehilite .nn { color: #cccccc }
+.codehilite .cs { color: #a6a6a6 }
+.codehilite .nf { color: #f2777a }
+.codehilite .cp { color: #cc99cc }
+.codehilite .sb { color: #f99157 }
+.codehilite .w { color: #cccccc }
+.codehilite .s { color: #99cc99 }
+.codehilite .pm { color: #cccccc }
+.codehilite .se { color: #f99157 }
+.codehilite .sx { color: #99cc99 }
+.codehilite .c1 { color: #8c8c8c }
+.codehilite .err { color: #cccccc }
+.codehilite .ges { color: #f99157 }
+.codehilite .bp { color: #ffcc66 }
+.codehilite .gt { color: #f2777a }
+.codehilite .kn { color: #cc99cc }
+.codehilite .mh { color: #f99157 }
+.codehilite .ss { color: #99cc99 }
+.codehilite .cpf { color: #99cc99 }
+.codehilite .nt { color: #f2777a }
+.codehilite .py { color: #6699cc }
+.codehilite .sr { color: #99cc99 }
+.codehilite .sa { color: #99cc99 }
+.codehilite .nb { color: #cc99cc }
+.codehilite .gh { color: #cc99cc }
+.codehilite .vm { color: #ffcc66 }
+.codehilite .mo { color: #f99157 }
+.codehilite .vi { color: #6699cc }
+.codehilite .no { color: #ffcc66 }
+.codehilite .vc { color: #6699cc }
+.codehilite .cm { color: #8c8c8c }
+.codehilite .ni { color: #f99157 }
+.codehilite .nl { color: #f2777a }
+.codehilite .c { color: #8c8c8c }
+.codehilite .gp { color: #66cccc }
+.codehilite .s1 { color: #99cc99 }
+.codehilite .g { color: #cccccc }
+.codehilite .ch { color: #a6a6a6 }
+.codehilite .vg { color: #ffcc66 }
+.codehilite .sd { color: #99cc99 }
+.codehilite .kt { color: #cc99cc }
+.codehilite .nx { color: #cccccc }
+.codehilite .x { color: #cccccc }
+.codehilite .n { color: #cccccc }
+.codehilite .ge { color: #ffcc66 }
+.codehilite .fm { color: #ffcc66 }
+.codehilite .gr { color: #f2777a }
+.codehilite .kp { color: #cc99cc }
+.codehilite .gi { color: #99cc99 }
+.codehilite .go { color: #cccccc }
+.codehilite .k { color: #cc99cc }
+.codehilite .kd { color: #cc99cc }
+.codehilite .na { color: #f99157 }
+.codehilite .ne { color: #f2777a }
+.codehilite .dl { color: #99cc99 }
+.codehilite .sh { color: #99cc99 }
+.codehilite .kr { color: #cc99cc }
+.codehilite .nv { color: #cccccc }
+.codehilite .sc { color: #f99157 }
+.codehilite .gu { color: #cc99cc }
+.codehilite .kc { color: #cc99cc }
+.codehilite .l { color: #f99157 }
+.codehilite .mi { color: #f99157 }
+.codehilite .o { color: #66cccc }
+.codehilite .ow { color: #cc99cc }
+.codehilite .mb { color: #f99157 }
+.codehilite .m { color: #f99157 }
+.codehilite .mf { color: #f99157 }
+.codehilite .il { color: #f99157 }
+.codehilite .gd { color: #f2777a }
+.codehilite .p { color: #cccccc }
+.codehilite .cd { color: #ffcc66 }
+.codehilite .nc { color: #ffcc66 }
+.codehilite .nd { color: #cc99cc }
+.codehilite .ld { color: #f99157 }
+.codehilite .gs { color: #f99157 }
+.codehilite .s2 { color: #99cc99 }
+.codehilite .si { color: #cccccc }
+.codehilite .hll {
+    display: block;
+    background-color: rgba(255, 255, 255, 0.075);
+}
+
+.codehilite {
+    position: relative;
+    overflow-x: hidden;
+    margin: 1rem 0;
+}
+
+.codehilite pre {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.codehilite:hover .copy-button {
+    opacity: 1;
+}
+
+.codehilite .copy-button {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background-color: rgba(57, 57, 57, 1.000);
+    color: rgba(255, 255, 255, 0.45);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 5px 9px 6px 9px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.15s ease-in;
+}
+
+.sticky-toc {
+    position: fixed;
+    right: 20px;
+    z-index: 1;
+    max-width: min(60%, 340px);
+    display: none;
+}
+
+@media (max-width: 350px) {
+    .sticky-toc {
+        max-width: calc(100% - 20px);
+    }
+}
+
+.sticky-toc .toc {
+    display: none;
+    max-width: none;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    float: none;
+    margin: 0;
+}
+
+.hot-corner {
+    position: fixed;
+    right: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    z-index: -1;
+    opacity: 1;
+}
+
+.app-layout-unified .sticky-toc,
+.app-layout-unified .hot-corner {
+    top: 0;
+}
+
+.app-layout-expanded .sticky-toc,
+.app-layout-expanded .hot-corner {
+    top: 20px;
+}
+
+.hot-corner svg {
+    fill: rgba(204, 204, 204, 1.000);
+}
+
+.hot-corner svg,
+.hot-corner {
+    width: 16px;
+    height: 16px;
+}
+
+.sticky-toc .toc,
+.hot-corner {
+    background: rgba(57, 57, 57, 0.850);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    -webkit-backdrop-filter: saturate(200%) blur(30px);
+    backdrop-filter: saturate(200%) blur(30px);
+}
+
+.sticky-toc:hover .hot-corner {
+    opacity: 0;
+}
+
+.hot-corner:hover + .toc,
+.toc:hover {
+    display: block;
+}
+    </style>
+    
+    
+</head>
+<body class="app-style-dark app-theme-Tomorrow-Night-80s app-lang-zh-Hans-CN">
+    <p>在 Kotlin 中，有五个常用的作用域函数，它们是: <code>apply</code>、<code>also</code>、<code>let</code>、<code>with</code> 和 <code>run</code>。</p>
+<ol>
+<li>
+<p><code>apply</code>：适用于初始化对象的场景或需要在对象上执行多个操作的场景。 <code>apply</code> 函数返回对象本身。<br />
+<div class="codehilite"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Person</span><span class="p">().</span><span class="na">apply</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;John&quot;</span>
+<span class="w">    </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">25</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><code>also</code>：适用于需要执行一些附加操作的场景，并且不需要引用对象本身的返回值。 <code>also</code> 函数返回对象本身。<br />
+<div class="codehilite"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutableListOf</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="n">list</span><span class="p">.</span><span class="na">also</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb">it</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">it</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">it</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="m">3</span><span class="p">)</span>
+<span class="p">}.</span><span class="na">also</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;List size: </span><span class="si">${</span><span class="nb">it</span><span class="p">.</span><span class="na">size</span><span class="si">}</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><code>let</code>：适用于对非空对象执行代码块的场景，并且需要引用代码块的结果。 <code>let</code> 函数返回代码块的最后一个表达式的结果。<br />
+<div class="codehilite"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">name</span><span class="p">:</span><span class="w"> </span><span class="kt">String?</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;John&quot;</span>
+<span class="n">name</span><span class="o">?.</span><span class="na">let</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">nonNullName</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Name: </span><span class="si">$</span><span class="n">nonNullName</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><code>with</code>：适用于对非空对象执行多个操作的场景，而无需引用对象本身或对返回值感兴趣。 <code>with</code> 是一个顶层函数，不是作为对象的成员函数。<br />
+<div class="codehilite"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Person</span><span class="p">()</span>
+<span class="n">with</span><span class="p">(</span><span class="n">person</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;John&quot;</span>
+<span class="w">    </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">25</span>
+<span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Person: </span><span class="si">$</span><span class="n">name</span><span class="s">, </span><span class="si">$</span><span class="n">age</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><code>run</code>：适用于链式操作，并且需要引用对象自身作为返回值。 <code>run</code> 函数返回代码块的最后一个表达式的结果。<br />
+<div class="codehilite"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Person</span><span class="p">()</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">updatedPerson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="na">run</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;John&quot;</span>
+<span class="w">    </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">25</span>
+<span class="w">    </span><span class="k">this</span>
+<span class="p">}</span>
+</code></pre></div><br />
+<strong>对于with，T.run，T.apply接收者是this，而T.let和T.also接收者是it；对于with,T.run,T.let返回值是作用域的最后一个对象（this）,而T.apply和T.also返回值是调用者本身(itself)。</strong></p>
+</li>
+</ol>
+</body>
+</html>
