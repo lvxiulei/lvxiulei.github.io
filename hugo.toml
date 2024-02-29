@@ -3,29 +3,3 @@ languageCode = 'en-us'
 title = '我的个人博客'
 theme = 'ananke'
 themesDir = 'themes'
-[params]
-  subtitle = 'The Best Widgets on Earth'
-  [params.contact]
-    email = 'info@example.org'
-    phone = '+1 202-555-1212'
-[menus]
-[[menus.main]]
-    name = 'Home'
-    pageRef = '/'
-    weight = 10
-[[menus.main]]
-    name = 'Products'
-    pageRef = '/products'
-    weight = 20
-[[menus.main]]
-    name = 'Services'
-    pageRef = '/services'
-    weight = 30 
-[[menus.footer]]
-    name = 'Terms'
-    pageRef = '/terms'
-    weight = 10
-[[menus.footer]]
-    name = 'Privacy'
-    pageRef = '/privacy'
-    weight = 20  
